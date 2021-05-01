@@ -8,7 +8,7 @@ int main()
     int n = sizeof(a) / sizeof(a[0]);
 
     // insert the keys into the hash table
-    Hash h(7);   // 7 is count of buckets in
+    Hash h;   // 7 is count of buckets in
                  // hash table
     for (int i = 0; i < n; i++)
         h.insertItem(a[i]);

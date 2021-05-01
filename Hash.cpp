@@ -1,9 +1,7 @@
 #include "Hash.h"
 
-Hash::Hash(int buckets)
+Hash::Hash()
 {
-	nr_of_buckets = buckets;
-	hash_table = new std::list<int>[nr_of_buckets];
 }
 
 int Hash::hashFunction(int key)
@@ -22,7 +20,7 @@ void Hash::deleteItem(int key)
 	int index = hashFunction(key);
 
 	// find the key in (index)th list
-	
+
 	std::list<int>::iterator iter = std::find(hash_table[index].begin(), hash_table[index].end(), key);
 
 	if (iter != hash_table[index].end())
@@ -34,8 +32,13 @@ void Hash::displayHash()
 {
 	for (int i = 0; i < nr_of_buckets; i++) {
 		std::cout << i;
-		for (const auto & x : hash_table[i])
+		for (const auto& x : hash_table[i])
 			std::cout << " --> " << x;
 		std::cout << std::endl;
 	}
+}
+
+Hash::~Hash()
+{
+	delete hash_table;
 }
